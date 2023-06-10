@@ -1,0 +1,28 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+
+
+class {{ class }} extends Model
+{
+    use HasFactory;
+    protected $fillable = [];
+    public $incrementing = false;
+
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($model) {
+            $model->id = (string) Str::uuid();
+
+            $model->created_by = $model->created_by ?? auth()->user()->id;
+        });
+        static::updating(function ($model) {
+
+        });
+    }
+}
