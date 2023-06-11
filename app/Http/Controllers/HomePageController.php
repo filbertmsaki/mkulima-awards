@@ -14,7 +14,6 @@ class HomePageController extends Controller
     public function index()
     {
 
-        return "DONE";
         $voting = EventSetting::where('value', 'voting')->first();
         $award_registration = EventSetting::where('value', 'award_registration')->first();
 
