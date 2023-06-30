@@ -34,36 +34,17 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="profile-content">
                                 <h5 class="blog-title text-light-black">About Mkulima Awards</h5>
-                                <p>
-                                    The Mkulima Awards is an annual event that celebrates excellence and innovation in
-                                    agriculture in Tanzania. The awards recognize farmers, agribusinesses, and
-                                    organizations that have made outstanding contributions to the agriculture sector
-                                    through their innovation, productivity, and sustainability practices.
-
+                                <p>Welcome to the Mkulima Awards, a prestigious event held annually to recognize and commend stakeholders in the agriculture, environment, and tourism sectors in Tanzania. 2023 marks the third consecutive year of these awards, which aim to celebrate and honor the remarkable achievements of individuals and organizations in these vital industries.
                                 </p>
-                                <p>The event is open to all individuals, organizations, and companies involved in
-                                    agriculture, including farmers, pro- cessors, input providers, researchers, and
-                                    innovators. Participants can submit their entries in various categories, such as
-                                    crop production, livestock farming, agribusiness, and research and innovation
-                                    through the website.
+                                <p>Mkulima Awards serves as a platform that brings together stakeholders in agriculture, environment, and tourism, with the objective of acknowledging their exceptional efforts and contributions to the development of our nation. These awards are presented to individuals, companies, institutions, and successful projects in various categories. Over 40 awards are given each year, encompassing a wide range of achievements.
                                 </p>
-                                <p>The winners of the Mkulima Awards are selected by a panel of judges comprising of
-                                    experts in agriculture and business, The awards ceremony is a major highlight of the
-                                    agricultural calendar and attracts a diverse range of stakeholders from the private
-                                    and public sectors.
+                                <p>We understand the significance of the agriculture sector as the backbone of our country's economy. Mkulima Awards recognize and commend diligent and innovative farmers who, through their hard work, bring about positive changes in crop production, livestock farming, and raw material harvesting. These awards also pay tribute to agricultural entrepreneurs who embrace sustainable practices, value-added production, and market development.
                                 </p>
-                                <p>To make the Mkulima Awards a success, we are inviting participants to submit their
-                                    entries and showcase their achievements in agriculture. We are also calling for
-                                    partners and sponsors to support the event and help us rec- ognize and celebrate the
-                                    efforts of those who are driving innovation and growth in the agriculture sector.
+                                <p>In addition, Mkulima Awards extend their recognition to stakeholders in the environment and tourism sectors. We acknowledge and honor individuals and organizations that contribute to the preservation and conservation of our natural resources, promote eco-friendly practices, and foster sustainable tourism development in Tanzania. These awards highlight the importance of environmental stewardship and the positive impact of responsible tourism on both the economy and our natural heritage.
                                 </p>
-                                <p>If you are interested in participating in the Mkulima Awards or supporting the event
-                                    as a partner or sponsor, please contact through the contacts provided in the last
-                                    page, We look forward to hearing from you and working together to make the Mkulima
-                                    Awards a success.
+                                <p>Mkulima Awards provide a platform for showcasing exemplary models and success stories in these sectors. By celebrating the achievements of our stakeholders, we aim to inspire and motivate others to strive for excellence, innovation, and sustainability in their respective fields. Together, we can build a prosperous and environmentally conscious Tanzania, where agriculture, environment, and tourism thrive hand in hand.
                                 </p>
-                                <p class="text-light-white">Mkulima Awards is an annual event that recognizes and celebrates outstanding farmers, agricul- tural stakeholders, and agribusinesses in Tanzania. The event aims to promote, inspire and compli- ment agriculture stakeholders and farmers who have made significant contributions to the growth and development of the agriculture sector.
-                                </p>
+                               
                             </div>
                         </div>
                     </div>
