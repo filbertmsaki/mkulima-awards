@@ -166,22 +166,17 @@
     <section class="about-us-slider swiper-container p-relative slider-banner-1">
         <div class="swiper-wrapper">
             <div class="swiper-slide slide-item">
-                <img src="{{ asset('web/images/image-1.jpg') }}" class="img-fluid full-width" alt="Banner">
+                <img src="{{ asset('web/images/slider-1.jpg') }}" class="img-fluid full-width" alt="Banner">
                 <div class="transform-center z-index-3">
                     <div class="container-fluid custom-container">
                         <div class="row justify-content-center">
                             <div class="col-lg-12 align-self-center">
                                 <div class="right-side-content far-right">
-                                    <h5 class="text-white">Around the world.</h5>
-                                    <h1 class="text-white fw-600">We help all <span
-                                            class="text-custom-pink">people</span> in need</h1>
-                                    <p class="text-white fw-400">Gray eel-catfish longnose whiptail catfish smalleye
-                                        squaretail queen danio unicorn fish
-                                        shortnose greeneye fusilier fish silver carp nibbler sharksucker tench lookdown
-                                        catfish</p>
-                                    <a href="#" class="btn-solid with-line btn-big mt-20 mr-1"><span>Explore <i
-                                                class="fas fa-caret-right"></i></span></a>
-                                    <a href="#" class="border-butn mt-20 ml-1"><span>Shop Now</span></a>
+                                    <h1 class="text-white fw-600">MKULIMA AWARDS<span
+                                            class="text-custom-pink">2023</span></h1>
+                                    <p class="text-white fw-400">Recognizing and Commending Stakeholders in the Agriculture, Environment, and Tourism Sectors in Tanzania
+                                    </p>
+
                                 </div>
                             </div>
                         </div>
@@ -196,16 +191,13 @@
                         <div class="row justify-content-center">
                             <div class="col-lg-12 align-self-center">
                                 <div class="right-side-content text-center">
-                                    <h5 class="text-white">Around the world.</h5>
-                                    <h1 class="text-white fw-600">Our Helping <span
-                                            class="text-custom-pink">people</span> in need</h1>
-                                    <p class="text-white fw-400">Gray eel-catfish longnose whiptail catfish smalleye
-                                        squaretail queen danio unicorn fish
-                                        shortnose greeneye fusilier fish silver carp nibbler sharksucker tench lookdown
-                                        catfishf</p>
-                                    <a href="#" class="btn-solid with-line btn-big mt-20 mr-1"><span>Shop Now <i
+                                    <h5 class="text-white">Join us Today.</h5>
+                                    <h1 class="text-white fw-600">To pay tribute to <span
+                                            class="text-custom-pink">agricultural entrepreneurs </span></h1>
+                                    <p class="text-white fw-400">Mkulima Awards provide a platform for showcasing exemplary models and success stories in these sectors.</p>
+                                    <a href="{{ route('web.contact-us') }}" class="btn-solid with-line btn-big mt-20 mr-1"><span>Contact Us <i
                                                 class="fas fa-caret-right"></i></span></a>
-                                    <a href="#" class="border-butn mt-20 ml-1"><span>Learn More</span></a>
+                                    <a href="{{ route('web.about-us') }}" class="border-butn mt-20 ml-1"><span>Learn More</span></a>
                                 </div>
                             </div>
                         </div>
@@ -213,30 +205,7 @@
                 </div>
                 <div class="overlay overlay-bg-dark overlay-bg-img"></div>
             </div>
-            <div class="swiper-slide slide-item">
-                <img src="{{ asset('web/images/image-3.jpg') }}" class="img-fluid full-width" alt="Banner">
-                <div class="transform-center z-index-3">
-                    <div class="container-fluid custom-container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-12 align-self-center">
-                                <div class="left-side-content">
-                                    <h5 class="text-white">Around the world.</h5>
-                                    <h1 class="text-white fw-600">Our Helping <span
-                                            class="text-custom-pink">people</span> in need</h1>
-                                    <p class="text-white fw-400">Gray eel-catfish longnose whiptail catfish smalleye
-                                        squaretail queen danio unicorn fish
-                                        shortnose greeneye fusilier fish silver carp nibbler sharksucker tench lookdown
-                                        catfishf</p>
-                                    <a href="#" class="btn-solid with-line btn-big mt-20 mr-1"><span>Learn More
-                                            <i class="fas fa-caret-right"></i></span></a>
-                                    <a href="#" class="border-butn mt-20 ml-1"><span>Shop Now</span></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="overlay overlay-bg-dark overlay-bg-img"></div>
-            </div>
+
         </div>
         <!-- Add Arrows -->
         <div class="swiper-button-next"></div>
@@ -313,15 +282,9 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="profile-content">
                                 <h4>The Mkulima Awards</h4>
-                                <p><strong>About:</strong><br> The Mkulima Awards is an annual event that celebrates
-                                    excellence and innovation in agriculture in Tanzania. The awards recognize farmers,
-                                    agribusinesses, and organizations that have made outstanding contributions to the
-                                    agriculture sector through their innovation, productivity, and sustainability
-                                    practices. The event is open to all individuals, organizations, and companies
-                                    involved in agriculture, including farmers, pro- cessors, input providers,
-                                    researchers, and innovators. Participants can submit their entries in various
-                                    categories, such as crop production, livestock farming, agribusiness, and research
-                                    and innovation through the website.</p>
+                                <p>Welcome to the Mkulima Awards, a prestigious event held annually to recognize and commend stakeholders in the agriculture, environment, and tourism sectors in Tanzania. 2023 marks the third consecutive year of these awards, which aim to celebrate and honor the remarkable achievements of individuals and organizations in these vital industries.
+                                </p>
+                                <p>Join us as we come together to applaud the remarkable efforts and accomplishments of our stakeholders at the Mkulima Awards. Together, let us celebrate the transformative power of the agriculture, environment, and tourism sectors in shaping our nation's future.</p>
                                 <div class="bottom-group">
                                     <a href="{{ route('web.about-us') }}" class="btn-solid with-line"><span>Read More
                                             <i class="fas fa-caret-right"></i></span></a>

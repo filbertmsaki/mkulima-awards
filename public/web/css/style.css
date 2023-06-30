@@ -1287,9 +1287,9 @@ span.type-tag {
     justify-content: space-between;
 }
 .header .navigation .logo {
-    width: 120px;
+    width: 150px;
     height: 40px;
-    margin: 10px 0;
+    margin: 5px 0;
     z-index: 10;
 }
 .main-navigation > nav > .main-menu {

@@ -452,7 +452,7 @@ Version: 1.0.0
   // about-us-slider slider
   var swiper = new Swiper('.about-us-slider', {
     autoplay: {
-      delay: 2500,
+      delay: 50000,
       disableOnInteraction: false,
     },
     speed: 3500,

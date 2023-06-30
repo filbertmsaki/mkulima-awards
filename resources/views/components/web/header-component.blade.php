@@ -5,7 +5,7 @@
                 <div class="navigation ">
                     <div class="logo">
                         <a href="{{ route('web.index') }}">
-                            <img src="{{ asset('web/img/logo1.png') }}" class="image-fit" alt="logo">
+                            <img src="{{ asset('web/images/logo1.jpg') }}" class="image-fit" alt="logo">
                         </a>
                     </div>
                     <div class="main-navigation">
