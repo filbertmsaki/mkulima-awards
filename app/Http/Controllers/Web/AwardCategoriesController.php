@@ -28,7 +28,7 @@ class AwardCategoriesController extends Controller
     public function registration()
     {
         if (!award_registration_period()) {
-            abort(404);
+            return redirect()->route('web.index');
          }
         $categories = AwardCategory::orderBy('name', 'ASC')->get();
         return view('web.awards.registration', compact('categories'));

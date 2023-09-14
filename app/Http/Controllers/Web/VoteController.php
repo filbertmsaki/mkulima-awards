@@ -43,7 +43,7 @@ class VoteController extends Controller
     public function store(Request $request)
     {
         if (!voting_period()) {
-            abort(404);
+            return redirect()->route('web.index');
         }
         $agent = request()->header("User-Agent") . ' ' . request()->ip();
         $nominee = Nominee::where('id', $request->nominee)->first() ?? abort(404);
