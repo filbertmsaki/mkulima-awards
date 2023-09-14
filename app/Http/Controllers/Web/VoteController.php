@@ -22,7 +22,8 @@ class VoteController extends Controller
     public function index()
     {
         if (!voting_period()) {
-            abort(404);
+            return redirect()->route('web.index');
+
         }
         $categories = Nominee::select('category_id', DB::raw('count(*) as nominees'))
             ->groupBy('category_id')->where('verified', VerifiedEnum::Yes->value)->get();
