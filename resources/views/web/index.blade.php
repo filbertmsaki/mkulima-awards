@@ -1,6 +1,29 @@
 <x-guest-layout>
     @section('title', 'Home Page')
     @push('css')
+        <style>
+            #event-schedule {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            #event-schedule th,
+            #event-schedule td {
+                padding: 8px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+
+            #event-schedule th {
+                background-color: #f2f2f2;
+            }
+
+            #event-schedule ul li,
+            #event-schedule ol li {
+                list-style-type: lower-roman;
+                margin-left: 20px
+            }
+        </style>
     @endpush
     @push('scripts')
         <script>
@@ -173,9 +196,9 @@
                             <div class="col-lg-12 align-self-center">
                                 <div class="right-side-content far-right">
                                     <h1 class="text-white fw-600">MKULIMA AWARDS<span
-                                            class="text-custom-pink">2023</span></h1>
-                                    <p class="text-white fw-400">Recognizing and Commending Stakeholders in the Agriculture, Environment, and Tourism Sectors in Tanzania
-                                    </p>
+                                            class="text-custom-pink">2024</span></h1>
+                                    <p class="text-white fw-400">Growing Tomorrow: Recognizing the Best in Agriculture
+                                        Today</p>
 
                                 </div>
                             </div>
@@ -194,10 +217,13 @@
                                     <h5 class="text-white">Join us Today.</h5>
                                     <h1 class="text-white fw-600">To pay tribute to <span
                                             class="text-custom-pink">agricultural entrepreneurs </span></h1>
-                                    <p class="text-white fw-400">Mkulima Awards provide a platform for showcasing exemplary models and success stories in these sectors.</p>
-                                    <a href="{{ route('web.contact-us') }}" class="btn-solid with-line btn-big mt-20 mr-1"><span>Contact Us <i
+                                    <p class="text-white fw-400">Mkulima Awards provide a platform for showcasing
+                                        exemplary models and success stories in these sectors.</p>
+                                    <a href="{{ route('web.contact-us') }}"
+                                        class="btn-solid with-line btn-big mt-20 mr-1"><span>Contact Us <i
                                                 class="fas fa-caret-right"></i></span></a>
-                                    <a href="{{ route('web.about-us') }}" class="border-butn mt-20 ml-1"><span>Learn More</span></a>
+                                    <a href="{{ route('web.about-us') }}" class="border-butn mt-20 ml-1"><span>Learn
+                                            More</span></a>
                                 </div>
                             </div>
                         </div>
@@ -282,9 +308,16 @@
                         <div class="col-lg-6 col-md-6">
                             <div class="profile-content">
                                 <h4>The Mkulima Awards</h4>
-                                <p>Welcome to the Mkulima Awards, a prestigious event held annually to recognize and commend stakeholders in the agriculture, environment, and tourism sectors in Tanzania. 2023 marks the third consecutive year of these awards, which aim to celebrate and honor the remarkable achievements of individuals and organizations in these vital industries.
+                                <p>Welcome to the Mkulima Awards, a prestigious event held annually to recognize and
+                                    commend stakeholders in the agriculture, environment, and tourism sectors in
+                                    Tanzania. 2024 marks the third consecutive year of these awards, which aim to
+                                    celebrate and honor the remarkable achievements of individuals and organizations in
+                                    these vital industries.
                                 </p>
-                                <p>Join us as we come together to applaud the remarkable efforts and accomplishments of our stakeholders at the Mkulima Awards. Together, let us celebrate the transformative power of the agriculture, environment, and tourism sectors in shaping our nation's future.</p>
+                                <p>Join us as we come together to applaud the remarkable efforts and accomplishments of
+                                    our stakeholders at the Mkulima Awards. Together, let us celebrate the
+                                    transformative power of the agriculture, environment, and tourism sectors in shaping
+                                    our nation's future.</p>
                                 <div class="bottom-group">
                                     <a href="{{ route('web.about-us') }}" class="btn-solid with-line"><span>Read More
                                             <i class="fas fa-caret-right"></i></span></a>
@@ -292,6 +325,65 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row mt-5">
+                        <!-- Mission Card -->
+                        <div class="col-md-6">
+                            <div class="card d-flex h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fas fa-bullseye"></i> Mission</h5>
+                                    <p class="card-text">To recognize and honor outstanding individuals and
+                                        organizations
+                                        in
+                                        more than 40 award categories related to agriculture and environmental
+                                        achievements.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Target Card -->
+                        <div class="col-md-6">
+                            <div class="card d-flex h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fas fa-crosshairs"></i> Target</h5>
+                                    <p class="card-text">A formal awards ceremony featuring keynote speakers, category
+                                        announcements, and special performances.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <section class="about-section-style-1">
+        <div class="row no-gutters">
+
+            <div class="col-lg-6 bg-custom-primary">
+                <div class="about-section-container">
+                    <div class="section-header-left pb-0">
+                        <h3 class="header-title text-white mb-1">Execution of Mkulima Awards</h3>
+                        <p class="text-white">Keynote speeches from industry leaders addressing the significance of the
+                            awards and the impact of the recipients’ contributions. </p>
+                        <p class="text-white">Awards presented in various categories, with sponsors having the
+                            opportunity to present specific awards. </p>
+                        <p class="text-white">Special performances and entertainment acts interspersed with the awards
+                            to maintain a celebratory atmosphere. </p>
+                        <p class="text-white">Winners’ profiles and achievements highlighted, creating a memorable and
+                            inspiring experience for attendees. </p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="full-height">
+                    <img src="{{ asset('web/images/image-3.jpg') }}" alt="img"
+                        class="img-fluid full-width full-height border-0" style="border-radius: 0px">
                 </div>
             </div>
         </div>
@@ -366,6 +458,119 @@
                         <a href="{{ route('web.awards.registration.index') }}"
                             class="btn btn-text btn-text-white mt-20">Become A Nominee</a>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="our-articles bg-light-theme section-padding ">
+        <div class="container">
+            <div class=" padding-20 full-width  sa-causes-single-2 mb-md-40">
+                <div class="post-wrapper mb-xl-20">
+                    <h3 class="text-light-black header-title title text-left">Event Schedule</h3>
+                    <table id="event-schedule">
+                        <tr>
+                            <th>Time</th>
+                            <th>Program</th>
+                        </tr>
+                        <tr>
+                            <td>5:00 PM – 6:00 PM</td>
+                            <td>
+                                <p>Registration and Welcome Reception</p>
+                                <ul type="1">
+                                    <li>Guests arrive and register</li>
+                                    <li>Networking and welcome drinks</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6:00 PM – 6:30 PM</td>
+                            <td>
+                                <p>Opening Ceremony</p>
+                                <ul type="1">
+                                    <li>Welcome address by the Master of Ceremonies</li>
+                                    <li>National anthem</li>
+                                    <li>Official opening by the Guest of Honor</li>
+                                    <li>Remarks by the Guest of Honor</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6:30 PM – 7:00 PM</td>
+                            <td>
+                                <p>Keynote Speeches</p>
+                                <ul type="1">
+                                    <li>Distinguished keynote speakers addressing key issues in agriculture and the
+                                        environment</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7:00 PM – 8:00 PM</td>
+                            <td>
+                                <p>Gala Dinner</p>
+                                <ul type="1">
+                                    <li>Buffet-style dinner served</li>
+                                    <li>Networking and informal discussions</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8:00 PM – 9:00 PM</td>
+                            <td>
+                                <p>Panel Discussions</p>
+                                <ul type="1">
+                                    <li>Panel discussions on pertinent industry topics related to agriculture and the
+                                        environment</li>
+                                    <li>Q&A session with the audience</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>9:00 PM – 9:30 PM</td>
+                            <td>
+                                <p>Showcase of Innovative Projects</p>
+                                <ul type="1">
+                                    <li>Presentation of innovative projects in agriculture and environmental sectors
+                                    </li>
+                                    <li>Shortlisted projects highlighted with visual presentations</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>9:30 PM – 10:30 PM</td>
+                            <td>
+                                <p>Grand Awards Ceremony</p>
+                                <ul type="1">
+                                    <li>Recognition and awards presentation in more than 40 categories</li>
+                                    <li>Sponsor representatives present awards</li>
+                                    <li>Special performances and entertainment acts</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>10:30 PM – 11:00 PM</td>
+                            <td>
+                                <p>Closing Remarks</p>
+                                <ul type="1">
+                                    <li>Acknowledgments and thank you notes</li>
+                                    <li>Announcement of future events and initiatives</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>11:00 PM Onwards</td>
+                            <td>
+                                <p>Networking and Entertainment</p>
+                                <ul type="1">
+                                    <li>DJ and dancing</li>
+                                    <li>Networking, socializing, and celebrating the achievements in agriculture and the
+                                        environment</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>

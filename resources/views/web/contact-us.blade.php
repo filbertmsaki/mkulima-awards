@@ -78,10 +78,8 @@
     </div>
     <!-- breadcrumb -->
     <div class="contact_map d-flex">
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7923.003520744905!2d37.66211!3d-6.83028!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185a5da2dcdff9ad%3A0x84367c86d6410285!2sOld%20Dar%20Es%20Salaam%20Road%2C%20Morogoro!5e0!3m2!1sen!2stz!4v1686060948606!5m2!1sen!2stz"
-            width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1253.5869127528638!2d37.663197964021485!3d-6.825455076256483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x185a5dbea43fdcc9%3A0xce6bd3ac4d85934e!2sKorogwe%20Road%2C%20Morogoro!5e0!3m2!1sen!2stz!4v1707844063912!5m2!1sen!2stz" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
     <section class="section-padding bg-theme-primary">
         <div class="container">
@@ -96,8 +94,7 @@
                                 <span class="fa fa-map-marker"></span>
                             </div>
                             <div class="text pl-3">
-                                <p><span>Address:</span>Nhc Commercial Complex, Old Dar es salaam Road, Morogoro.
-                                    Tanzania</p>
+                                <p><span>Address:</span>Korogwe Road, Block No 10 (Halotel Building), First Floor P.O Box 2380 Morogoro, Tanzania</p>
                             </div>
                         </div>
                         <div class="dbox w-100 d-flex align-items-center">

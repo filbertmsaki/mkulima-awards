@@ -64,8 +64,7 @@
                         <li>
                             <a href="javascrip:void(0)" class="text-white"> <span><i
                                         class="pe-7s-map-marker"></i></span>
-                                Nhc Commercial Complex, Old Dar es salaam Road, Morogoro.
-                                Tanzania</a>
+                                        Korogwe Road, Block No 10 (Halotel Building), First Floor P.O Box 2380 Morogoro, Tanzania</a>
                         </li>
                     </ul>
                 </div>
