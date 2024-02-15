@@ -91,7 +91,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="category_id">Choose the Award Category</label>
-                                <select class="form-control select2bs4" id="category_id" name="category_id"
+                                <select class="form-control select2bs4" id="category_id"  name="category_id[]" multiple="multiple" 
                                     style="width: 100%;" required>
                                     <option value="">Select Award Category</option>
                                     @foreach ($categories as $category)

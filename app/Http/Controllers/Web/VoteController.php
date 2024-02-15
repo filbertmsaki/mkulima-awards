@@ -23,10 +23,35 @@ class VoteController extends Controller
     {
         if (!voting_period()) {
             return redirect()->route('web.index');
-
         }
-        $categories = Nominee::select('category_id', DB::raw('count(*) as nominees'))
-            ->groupBy('category_id')->where('verified', VerifiedEnum::Yes->value)->get();
+        $currentYear = Carbon::now()->year;
+        $nominees = Nominee::whereHas('award_categories', function ($query) use ($currentYear) {
+            $query->where('year', $currentYear);
+        })
+            ->where('verified', VerifiedEnum::Yes->value)
+            ->with('award_categories')
+            ->get();
+
+        $categories = [];
+        foreach ($nominees as $nominee) {
+            foreach ($nominee->categories as $category) {
+                $categoryId = $category->id;
+                $categorySlug = $category->slug;
+                $categoryName = $category->name;
+
+                if (!isset($categories[$categoryId])) {
+                    $categories[$categoryId] = [
+                        'name' => $categoryName,
+                        'id' => $categoryId,
+                        'slug' => $categorySlug,
+                        'count' => 1,
+                    ];
+                } else {
+                    $categories[$categoryId]['count']++;
+                }
+            }
+        }
+
         return view('web.vote.index', compact('categories'));
     }
 
@@ -48,8 +73,9 @@ class VoteController extends Controller
         }
         $agent = request()->header("User-Agent") . ' ' . request()->ip();
         $nominee = Nominee::where('id', $request->nominee)->first() ?? abort(404);
+        $category = AwardCategory::where('id', $request->category_id)->first();
         $vote = Vote::where([
-            'category_id' => $nominee->category->id,
+            'category_id' => $category->id,
             'agent' => $agent,
         ])->where('created_at', ">=", Carbon::now()->subHours(12)->format("Y-m-d H:i:s"));
 
@@ -57,14 +83,14 @@ class VoteController extends Controller
             Vote::create([
                 'ip' => request()->ip(),
                 'nominee_id' =>  $nominee->id,
-                'category_id' => $nominee->category->id,
+                'category_id' => $category->id,
                 'agent' => $agent
             ]);
-            return response()->json(['success' => trans('vote.notification.success', ['name' => $nominee->service_name, 'category' => $nominee->category->name])]);
+            return response()->json(['success' => trans('vote.notification.success', ['name' => $nominee->service_name, 'category' => $category->name])]);
         }
         $voted = Vote::where([
             'agent' => $agent,
-            'category_id' => $nominee->category->id
+            'category_id' => $category->id
         ])->first();
         $nominee_voted = Nominee::where('id', $voted->nominee_id)->first();
         return response()->json(['error' => trans('vote.notification.error', ['name' => $nominee_voted->service_name])]);
@@ -77,12 +103,14 @@ class VoteController extends Controller
     {
         if (!voting_period()) {
             abort(404);
-         }
-        $nominees = Nominee::whereHas('category', function (Builder $query) use ($id) {
+        }
+        $currentYear = Carbon::now()->year;
+        $nominees = Nominee::whereHas('categories', function (Builder $query) use ($id) {
             $query->where('slug', $id);
+        })->whereHas('award_categories', function ($query) use ($currentYear) {
+            $query->where('year', $currentYear);
         })->where('verified', VerifiedEnum::Yes->value)->get();
         $category = AwardCategory::where('slug', $id)->latest()->first();
-
         $share = new Share();
         $share->currentPage('Please vote for me as a ' . '' . $category->name)
             ->facebook()
@@ -91,7 +119,7 @@ class VoteController extends Controller
             ->whatsapp();
 
 
-        return view('web.vote.show', compact('nominees', 'share'));
+        return view('web.vote.show', compact('nominees', 'share', 'category'));
     }
 
     /**

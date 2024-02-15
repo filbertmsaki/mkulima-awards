@@ -31,16 +31,15 @@
                 <div class="footer-links">
                     <h6 class="text-custom-white">Get to Know Us</h6>
                     <ul>
-                        <li><a href="blog-details.html" class="text-white fw-500">Home Page</a>
+                        <li><a href="{{ route('web.index') }}" class="text-white fw-500">Home Page</a>
                         </li>
-                        <li><a href="about.html" class="text-white fw-500">About Us</a>
+                        <li><a href="{{ route('web.about-us') }}" class="text-white fw-500">About Us</a>
                         </li>
-                        <li><a href="#" class="text-white fw-500">Contact Us</a>
+                        <li><a href="{{ route('web.contact-us') }}" class="text-white fw-500">Contact Us</a>
                         </li>
-                        <li><a href="index.html" class="text-white fw-500">Vote</a>
+                        <li><a href="{{ route('web.privacy_policy') }}" class="text-white fw-500">Privacy policy</a>
                         </li>
-                        <li><a href="#" class="text-white fw-500">Awards Categories</a>
-                        </li>
+                       
                     </ul>
                 </div>
             </div>

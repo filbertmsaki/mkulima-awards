@@ -13,7 +13,6 @@ class Nominee extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'category_id',
         'entry',
         'service_name',
         'company_phone',
@@ -48,8 +47,21 @@ class Nominee extends Model
             $model->description = capitalize($model->description);
         });
     }
-    public function category()
+    public function categories()
     {
-        return $this->belongsTo(AwardCategory::class, 'category_id');
+        return $this->belongsToMany(AwardCategory::class, 'nominee_categories', 'nominee_id', 'category_id');
+    }
+
+    public function award_categories()
+    {
+        return $this->hasMany(NomineeCategory::class, 'nominee_id');
+    }
+    public function getCategoriesNameAttribute()
+    {
+        return $this->award_categories()->with('category')->get()->pluck('category.name')->implode(',');
+    }
+    public function getCategoriesIdsAttribute()
+    {
+        return $this->award_categories()->with('category')->get()->pluck('category.id')->toArray();
     }
 }

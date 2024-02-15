@@ -102,7 +102,7 @@
                                 <div class="form-group">
                                     <label class="text-light-black fw-600">Choose the Award Category</label>
                                     <select class="form-control form-control-submit select2bs4" id="category_id"
-                                        name="category_id" required>
+                                        name="category_id[]" multiple="multiple"  required>
                                         <option value="">Select Award Category</option>
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>

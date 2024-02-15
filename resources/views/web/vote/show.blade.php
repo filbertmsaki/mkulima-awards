@@ -11,6 +11,7 @@
                 $('body').on('click', '.btn-vote', function(e) {
                     e.preventDefault();
                     var id = $(this).data('id');
+                    var category_id = $(this).data('category_id');
                     var url = "{{ route('web.awards.votes.store') }}";
 
                     if (id != '') {
@@ -20,6 +21,7 @@
                             data: {
                                 _token: "{{ csrf_token() }}",
                                 nominee: id,
+                                category_id: category_id,
                             },
                             dataType: "json",
                             success: function(data) {
@@ -93,7 +95,7 @@
                                 </div>
                             </div>
                             <div class="btn-area text-center w-100 mt-auto" >
-                                <a class="btn-donation text-btn fs-12 full-width btn-vote" data-id="{{ $nominee->id }}"
+                                <a class="btn-donation w-100 text-btn fs-12 full-width btn-vote" data-category_id="{{ $category->id }}" data-id="{{ $nominee->id }}"
                                     href="javascript:void(0)">VOTE</a>
                             </div>
                         </div>

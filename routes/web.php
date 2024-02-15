@@ -35,6 +35,8 @@ Route::middleware([
 
 Route::group(['as' => 'web.'], function () {
     Route::get('/', [HomePageController::class, 'index'])->name('index');
+    Route::get('/privacy-policy', [HomePageController::class, 'privacy_policy'])->name('privacy_policy');
+    Route::get('/nominee', [HomePageController::class, 'nominee']);
     Route::get('/about-us', [HomePageController::class, 'aboutUs'])->name('about-us');
     Route::get('/contact-us', [HomePageController::class, 'contactUs'])->name('contact-us');
     Route::post('/contact-us', [HomePageController::class, 'contactUsStore'])->name('contact-us.store');

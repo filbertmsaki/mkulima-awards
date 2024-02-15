@@ -114,12 +114,8 @@
                                             <td>{{ $nominee->contact_person_phone }}</td>
                                             <td>{{ $nominee->contact_person_email }}</td>
                                             <td>{{ @$nominee->categories_name }}</td>
-                                            <td> <span
-                                                    class="right badge badge-{{ $nominee->entry->value }}">{{ $nominee->entry->name }}</span>
-                                            </td>
-                                            <td> <span
-                                                    class="right badge badge-{{ $nominee->verified->value }}">{{ $nominee->verified->name }}</span>
-                                            </td>
+                                            <td> <span class="right badge badge-{{ $nominee->entry->value }}">{{ $nominee->entry->name }}</span>  </td>
+                                            <td> <span class="right badge badge-{{ $nominee->verified->value }}">{{ $nominee->verified->name }}</span></td>
                                             <td class="d-flex justify-content-center">
                                                 <div class="btn-group ">
                                                     <a href="{{ route('admin.award-nominee.edit', $nominee->id) }}"

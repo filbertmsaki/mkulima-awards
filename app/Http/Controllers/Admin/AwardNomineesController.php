@@ -7,7 +7,9 @@ use App\Enums\VerifiedEnum;
 use App\Http\Controllers\Controller;
 use App\Models\AwardCategory;
 use App\Models\Nominee;
+use App\Models\NomineeCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Enum;
 
 class AwardNomineesController extends Controller
@@ -17,7 +19,9 @@ class AwardNomineesController extends Controller
      */
     public function index()
     {
-        $nominees = Nominee::latest()->get();
+        $nominees = Nominee::latest()->whereHas('categories', function ($query) {
+            $query->where('year', date('Y'));
+        })->get();
         return view('admin.nominees.index', compact('nominees'));
     }
 
@@ -44,16 +48,44 @@ class AwardNomineesController extends Controller
             'contact_person_phone' => 'required',
             'contact_person_email' => 'required',
         ]);
-        $exists = Nominee::where('category_id', $request->category_id)
-            ->where('service_name', capitalize($request->service_name))
+        $exists = Nominee::whereHas('categories', function ($query) use ($request) {
+            $query->whereIn('category_id', $request->category_id);
+        })->where('service_name', capitalize($request->service_name))
             ->where('contact_person_name', capitalize($request->contact_person_name))
             ->where('contact_person_phone', capitalize($request->contact_person_phone))
             ->exists();
         if ($exists) {
             return redirect()->back()->with('info', 'Nominee with submited data already exists.');
         } else {
-            Nominee::create($request->except('_token'));
-            return redirect()->route('admin.award-nominee.index')->with('success', 'Nominee successful Created.');
+            DB::beginTransaction();
+            $nominee =  Nominee::updateOrCreate(
+                [
+                    'service_name' => $request->service_name,
+                    'contact_person_name' => $request->contact_person_name,
+                    'contact_person_phone' => $request->contact_person_phone,
+                ],
+                [
+                    'entry' => $request->entry,
+                    'company_phone' => $request->company_phone,
+                    'company_email' => $request->company_email,
+                    'contact_person_email' => $request->contact_person_email,
+                    'address' => $request->address,
+                    'description' => $request->description,
+                    'verified' => $request->verified,
+                ]
+            );
+            if ($nominee) {
+                foreach ($request->category_id as  $category_id) {
+                    $nominee_category = NomineeCategory::updateOrCreate([
+                        'category_id' => $category_id,
+                        'nominee_id' => $nominee->id,
+                        'year' => date('Y')
+                    ]);
+                }
+                DB::commit();
+                return redirect()->back()->with('success', 'Your request has been submited successfull.');
+            }
+            return redirect()->back()->with('error', 'Unknown error occur.');
         }
     }
 
@@ -62,7 +94,11 @@ class AwardNomineesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $nominees = Nominee::whereHas('categories', function ($query) use ($id) {
+            $query->where('year', $id);
+        })->where('verified', VerifiedEnum::Yes->value)
+            ->get();
+        return view('admin.nominees.show', compact('nominees', 'id'));
     }
 
     /**
@@ -74,7 +110,7 @@ class AwardNomineesController extends Controller
         if ($nominee) {
             $categories = AwardCategory::orderBy('name', 'ASC')->get();
 
-            return view('admin.nominees.edit', compact('nominee','categories'));
+            return view('admin.nominees.edit', compact('nominee', 'categories'));
         }
         return redirect()->route('admin.award-nominee.index')->with('error', 'Data Not Found.');
     }
@@ -86,10 +122,40 @@ class AwardNomineesController extends Controller
     {
         $nominee = Nominee::where('id', $id)->first();
         if ($nominee) {
-            $nominee->update($request->except('_token', 'id','files','_method'));
-            
-            return redirect()->back()->with('success', 'Nominee Successful Updated.');
+            $nomineeUpdate =   $nominee->update(
+                [
+                    'service_name' => $request->service_name,
+                    'contact_person_name' => $request->contact_person_name,
+                    'contact_person_phone' => $request->contact_person_phone,
+                    'entry' => $request->entry,
+                    'company_phone' => $request->company_phone,
+                    'company_email' => $request->company_email,
+                    'contact_person_email' => $request->contact_person_email,
+                    'address' => $request->address,
+                    'description' => $request->description,
+                    'verified' => $request->verified,
+                ]
+            );
+            if ($nomineeUpdate) {
+                if (isset($request->category_id) && !empty($request->category_id)) {
+                    foreach ($nominee->award_categories as $nominee_categories) {
+                        $nominee_categories->delete();
+                    }
+                    foreach ($request->category_id as  $category_id) {
+                        $nominee_category = NomineeCategory::updateOrCreate([
+                            'category_id' => $category_id,
+                            'nominee_id' => $nominee->id,
+                            'year' => date('Y')
+                        ]);
+                    }
+                }
+                DB::commit();
+                return redirect()->back()->with('success', 'Your request has been submited successfull.');
+            }
 
+
+
+            return redirect()->back()->with('success', 'Nominee Successful Updated.');
         }
         return redirect()->route('admin.award-nominee.index')->with('error', 'Data Not Found.');
     }

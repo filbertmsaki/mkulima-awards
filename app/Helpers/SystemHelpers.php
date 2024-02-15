@@ -1,8 +1,11 @@
 <?php
 
 use App\Enums\EventStatusEnum;
+use App\Models\AwardCategory;
 use App\Models\EventSetting;
+use App\Models\NomineeCategory;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 
@@ -136,5 +139,14 @@ if (!function_exists('capitalize ')) {
         $string = strtolower($string);
         $string = ucwords($string);
         return $string;
+    }
+}
+
+if (!function_exists('award_years')) {
+    function award_years()
+    {
+        $runners = NomineeCategory::select(DB::raw('YEAR(year) year'))
+            ->orderBy('year', 'DESC')->groupBy('year')->get();
+        return  $runners;
     }
 }

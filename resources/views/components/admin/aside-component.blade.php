@@ -85,6 +85,28 @@
                                    <p>Nominees List</p>
                                </a>
                            </li>
+                           <li
+                               class="nav-item {{ request()->routeIs('admin.award-nominee.show*') ? 'menu-is-opening menu-open' : '' }}">
+                               <a href="javascript:void(0)"
+                                   class="nav-link {{ request()->routeIs('admin.award-nominee.show*') ? 'active' : '' }}">
+                                   <i class="far fa-circle nav-icon"></i>
+                                   <p>
+                                       Nominees List Per Year
+                                       <i class="right fas fa-angle-left"></i>
+                                   </p>
+                               </a>
+                               <ul class="nav nav-treeview">
+                                   @foreach (award_years() as $item)
+                                       <li class="nav-item">
+                                           <a href="{{ route('admin.award-nominee.show', $item->year) }}"
+                                               class="nav-link {{ Request::is('admin/award-nominee/' . $item->year) ? 'active' : '' }}">
+                                               <i class="far fa-dot-circle nav-icon"></i>
+                                               <p>{{ $item->year }}</p>
+                                           </a>
+                                       </li>
+                                   @endforeach
+                               </ul>
+                           </li>
                        </ul>
                    </li>
                    <li
@@ -100,10 +122,11 @@
                        <ul class="nav nav-treeview">
                            @foreach ($vote_years as $vote_year)
                                <li class="nav-item">
-                                   <a href="{{ route('admin.award-voting.show',$vote_year->year) }}"
+                                   <a href="{{ route('admin.award-voting.show', $vote_year->year) }}"
                                        class="nav-link {{ request()->is('admin/award-voting/' . $vote_year->year) ? 'active' : '' }}">
                                        <i class="far fa-circle nav-icon"></i>
-                                       <p>{{ $vote_year->year }} - <span class=" badge badge-success"> {{ number_format($vote_year->total_votes,0,'.',',')  }}</span></p>
+                                       <p>{{ $vote_year->year }} - <span class=" badge badge-success">
+                                               {{ number_format($vote_year->total_votes, 0, '.', ',') }}</span></p>
                                    </a>
                                </li>
                            @endforeach

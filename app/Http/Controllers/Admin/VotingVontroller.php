@@ -48,9 +48,9 @@ class VotingVontroller extends Controller
                 'category_id',
                 DB::raw("count(id) as total_votes"),
             )
-            ->groupBy('nominee_id')
+            ->groupBy('nominee_id', 'category_id')
             ->orderBy('total_votes', 'DESC')->get();
-        return view('admin.voting.index',compact('votes'));
+        return view('admin.voting.index', compact('votes'));
     }
 
     /**

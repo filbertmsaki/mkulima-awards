@@ -42,14 +42,15 @@
                                     </span>
                                 </div>
                                 <div class="causes-details text-center">
-                                    <h5 class="text-center fs-18">{{ $category->category->name }}</h5>
-                                    <span class=" text-capitalize text-success">({{ $category->nominees }}) nominees</span>
+                                    <h5 class="text-center fs-18">{{ $category['name'] }}</h5>
+                                    <span class=" text-capitalize text-success">({{ $category['count'] }})
+                                        nominees</span>
                                 </div>
 
                             </div>
                             <div class="btn-area text-center w-100 mt-auto">
-                                <a class="btn-donation text-btn fs-12 full-width"
-                                    href="{{ route('web.awards.votes.show', $category->category->slug) }}">Vote Now</a>
+                                <a class="btn-donation text-btn w-100 fs-12 full-width"
+                                    href="{{ route('web.awards.votes.show', $category['slug']) }}">Vote Now</a>
                             </div>
                         </div>
                     </div>

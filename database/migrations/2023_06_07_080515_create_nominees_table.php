@@ -14,7 +14,6 @@ return new class extends Migration
     {
         Schema::create('nominees', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('category_id');
             $table->string('entry');
             $table->string('service_name');
             $table->string('company_phone')->nullable();
@@ -25,9 +24,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('description');
             $table->string('verified')->default(VerifiedEnum::No->value);
-
             $table->timestamps();
-            $table->foreign('category_id')->references('id')->on('award_categories')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

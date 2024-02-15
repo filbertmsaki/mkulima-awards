@@ -14,9 +14,11 @@ class DashboardController extends Controller
     public function index()
     {
         $current_year = Carbon::now()->format('Y');
-        $nominees_count  = Nominee::whereYear('created_at',$current_year)->count();
-        $votes_count  = Vote::whereYear('created_at',$current_year)->count();
+        $nominees_count  = Nominee::whereHas('categories', function ($query) {
+            $query->where('year', date('Y'));
+        })->count();
+        $votes_count  = Vote::whereYear('created_at', $current_year)->count();
         $categories_count = AwardCategory::count();
-        return view('admin.index',compact('nominees_count','votes_count','categories_count'));
+        return view('admin.index', compact('nominees_count', 'votes_count', 'categories_count'));
     }
 }
