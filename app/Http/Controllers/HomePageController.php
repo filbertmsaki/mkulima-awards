@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\VerifiedEnum;
 use App\Models\AwardCategory;
 use App\Models\Contact;
 use App\Models\EventSetting;
@@ -108,5 +109,81 @@ class HomePageController extends Controller
             DB::rollBack();
             return redirect()->back()->with('error', 'Your message has not submited.');
         }
+    }
+
+    public function participation_confirmation($id, $category_id)
+    {
+        $nominee = Nominee::where('id', $id)->first();
+        if ($nominee) {
+            $category = AwardCategory::where('id', $category_id)->first();
+            if ($category) {
+                $categories = AwardCategory::orderBy('name', 'ASC')->get();
+                return view('web.nominee-confirmation', compact('categories', 'nominee', 'category'));
+            }
+            return redirect()->route('web.index')->with('error', 'Category not found');
+        }
+        return redirect()->route('web.index')->with('error', 'Nominee not found');
+    }
+
+
+    public function participation_confirmation_store(Request $request, $id, $category_id)
+    {
+
+        $request->validate([
+            'category_id' => 'required'
+        ]);
+        $nominee = Nominee::where('id', $id)->first();
+        if ($nominee) {
+            $exists = Nominee::whereHas('categories', function ($query) use ($request) {
+                $query->whereIn('category_id', $request->category_id)->where('year', date('Y'));
+            })->where('service_name', capitalize($nominee->service_name))
+                ->where('contact_person_name', capitalize($nominee->contact_person_name))
+                ->where('contact_person_phone', capitalize($nominee->contact_person_phone))
+                ->exists();
+            if ($exists) {
+                return redirect()->back()->with('info', 'You have already verified your participation.');
+            } else {
+                DB::beginTransaction();
+                if ($nominee) {
+                    foreach ($request->category_id as  $category_id) {
+                        $nominee_category = NomineeCategory::updateOrCreate([
+                            'category_id' => $category_id,
+                            'nominee_id' => $nominee->id,
+                            'year' => date('Y')
+                        ]);
+                    }
+                    DB::commit();
+                    return redirect()->route('web.index')->with('success', 'Your request has been submited successfull.');
+                }
+                return redirect()->back()->with('error', 'Unknown error occur.');
+            }
+        }
+        return redirect()->back()->with('error', 'Nominee not found');
+    }
+
+    public function  mail()
+    {
+
+        $year = 2022;
+        $categories_count = AwardCategory::count();
+        $details = DB::table('nominees')
+            ->select(
+                'award_categories.name as award_category_name',
+                'award_categories.id as award_category_id',
+                'nominees.service_name',
+                'nominees.id'
+            )
+            ->join('nominee_categories', 'nominees.id', '=', 'nominee_categories.nominee_id')
+            ->join('award_categories', 'nominee_categories.category_id', '=', 'award_categories.id')
+            ->where('nominee_categories.year', $year)
+            ->where('nominees.contact_person_email', 'jackson@shambadunia.com')
+            ->first();
+        $data = [
+            'name' => $details->service_name,
+            'total_category' => $categories_count,
+            'category' => $details->award_category_name,
+            'confimation_link' => route('web.participation_confirmation', ['category' =>  $details->award_category_id, 'id' =>  $details->id]),
+        ];
+        return view('emails.nominee-email', compact('data'));
     }
 }

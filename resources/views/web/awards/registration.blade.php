@@ -23,7 +23,6 @@
             var selected_enrty = $("#entry option:selected").val();
             console.log(selected_enrty);
             if (selected_enrty == individual) {
-
                 $('#company_phone').prop('disabled', true);
                     $('.company_phone_div').addClass('d-none');
                     $('#company_email').prop('disabled', true);

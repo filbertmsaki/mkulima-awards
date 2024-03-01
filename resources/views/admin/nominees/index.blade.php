@@ -113,7 +113,7 @@
                                             <td>{{ $nominee->contact_person_name }}</td>
                                             <td>{{ $nominee->contact_person_phone }}</td>
                                             <td>{{ $nominee->contact_person_email }}</td>
-                                            <td>{{ @$nominee->categories_name }}</td>
+                                            <td style="white-space: normal">{{ @$nominee->categories_name }}</td>
                                             <td> <span
                                                     class="right badge badge-{{ $nominee->entry->value }}">{{ $nominee->entry->name }}</span>
                                             </td>

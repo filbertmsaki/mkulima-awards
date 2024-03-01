@@ -34,6 +34,9 @@ Route::middleware([
 });
 
 Route::group(['as' => 'web.'], function () {
+    Route::get('/mail', [HomePageController::class, 'mail']);
+    Route::get('/participation-confirmation/{id}/{category}', [HomePageController::class, 'participation_confirmation'])->name('participation_confirmation');
+    Route::post('/participation-confirmation/{id}/{category}', [HomePageController::class, 'participation_confirmation_store'])->name('participation_confirmation.store');
     Route::get('/', [HomePageController::class, 'index'])->name('index');
     Route::get('/privacy-policy', [HomePageController::class, 'privacy_policy'])->name('privacy_policy');
     Route::get('/nominee', [HomePageController::class, 'nominee']);
