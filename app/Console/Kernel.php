@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
 
-        $schedule->command('participation:confirmation')->everyMinute();
+        // $schedule->command('participation:confirmation')->everyMinute();
     }
 
     /**
