@@ -145,10 +145,7 @@ if (!function_exists('capitalize ')) {
 if (!function_exists('award_years')) {
     function award_years()
     {
-        $runners = NomineeCategory::select(DB::raw('YEAR(year) as year'))
-        ->orderBy('year', 'DESC')
-        ->groupBy(DB::raw('YEAR(year)'))
-        ->get();;
+        $runners = NomineeCategory::orderBy('year', 'DESC')->groupBy('year')->get();
         return  $runners;
     }
 }
