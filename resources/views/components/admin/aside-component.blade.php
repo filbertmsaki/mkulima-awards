@@ -98,7 +98,7 @@
                                <ul class="nav nav-treeview">
                                    @foreach (award_years() as $item)
                                        <li class="nav-item">
-                                           <a href="{{ route('admin.award-nominee.show', $item->year) }}"
+                                           <a href=""
                                                class="nav-link {{ Request::is('admin/award-nominee/' . $item->year) ? 'active' : '' }}">
                                                <i class="far fa-dot-circle nav-icon"></i>
                                                <p>{{ $item->year }}</p>
