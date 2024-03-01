@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Enums\VerifiedEnum;
+use App\Jobs\ParticipationConfirmationJob;
+use App\Mail\ParticipationConfirmationMail;
 use App\Models\AwardCategory;
 use App\Models\Contact;
 use App\Models\EventSetting;
@@ -11,6 +13,7 @@ use App\Models\NomineeCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class HomePageController extends Controller
 {
@@ -184,6 +187,14 @@ class HomePageController extends Controller
             'category' => $details->award_category_name,
             'confimation_link' => route('web.participation_confirmation', ['category' =>  $details->award_category_id, 'id' =>  $details->id]),
         ];
+
+
+        $email = new ParticipationConfirmationMail($data);
+       $mail= Mail::to('filymsaki@gmail.com')->send($email);
+
+        dd( $mail);
+        // dispatch(new ParticipationConfirmationJob('filymsaki@gmail.com', $data));
+
         return view('emails.nominee-email', compact('data'));
     }
 }
