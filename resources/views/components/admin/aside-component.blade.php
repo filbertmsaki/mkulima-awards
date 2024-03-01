@@ -101,7 +101,7 @@
                                            <a href=""
                                                class="nav-link {{ Request::is('admin/award-nominee/' . $item->year) ? 'active' : '' }}">
                                                <i class="far fa-dot-circle nav-icon"></i>
-                                               <p>{{ $item->year }}</p>
+                                               <p>{{ $item }}</p>
                                            </a>
                                        </li>
                                    @endforeach
