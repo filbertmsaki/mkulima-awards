@@ -49,7 +49,7 @@ class ParticipationConfirmationCommand extends Command
         $groups = $details->chunk(50);
         foreach ($groups as $index =>  $group_detail) {
 
-            foreach($group_detail as $detail){
+            foreach ($group_detail as $detail) {
                 $delay = now()->addHours($index); // Delay increases for each group
 
                 if ($detail->contact_person_email) {
@@ -60,13 +60,13 @@ class ParticipationConfirmationCommand extends Command
                     $email = null;
                 }
                 if ($email == "jackson@shambadunia.com") {
-                   $data = [
+                    $data = [
                         'name' => $detail->service_name,
                         'total_category' => $categories_count,
                         'category' => $detail->award_category_name,
                         'confimation_link' => route('web.participation_confirmation', ['category' =>  $detail->award_category_id, 'id' =>  $detail->id]),
                     ];
-                    dispatch(new ParticipationConfirmationJob('info@kilimomarathon.co.tz', $data))->delay($delay);
+                    dispatch(new ParticipationConfirmationJob($email, $data))->delay($delay);
                 }
             }
         }
