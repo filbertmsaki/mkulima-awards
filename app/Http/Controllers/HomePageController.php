@@ -12,6 +12,7 @@ use App\Models\Nominee;
 use App\Models\NomineeCategory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 
@@ -167,34 +168,14 @@ class HomePageController extends Controller
     public function  mail()
     {
 
-        $year = 2022;
-        $categories_count = AwardCategory::count();
-        $details = DB::table('nominees')
-            ->select(
-                'award_categories.name as award_category_name',
-                'award_categories.id as award_category_id',
-                'nominees.service_name',
-                'nominees.id'
-            )
-            ->join('nominee_categories', 'nominees.id', '=', 'nominee_categories.nominee_id')
-            ->join('award_categories', 'nominee_categories.category_id', '=', 'award_categories.id')
-            ->where('nominee_categories.year', $year)
-            ->where('nominees.contact_person_email', 'jackson@shambadunia.com')
-            ->first();
-        $data = [
-            'name' => $details->service_name,
-            'total_category' => $categories_count,
-            'category' => $details->award_category_name,
-            'confimation_link' => route('web.participation_confirmation', ['category' =>  $details->award_category_id, 'id' =>  $details->id]),
-        ];
+        try {
+            Artisan::call('migrate');
+            $output = Artisan::output();
+            return response()->json(['message' => 'Migration successful', 'output' => $output]);
+        } catch (\Exception $e) {
+            return response()->json(['message' => 'Migration failed', 'error' => $e->getMessage()], 500);
+        }
 
-
-        $email = new ParticipationConfirmationMail($data);
-       $mail= Mail::to('filymsaki@gmail.com')->send($email);
-
-        dd( $mail);
-        // dispatch(new ParticipationConfirmationJob('filymsaki@gmail.com', $data));
-
-        return view('emails.nominee-email', compact('data'));
+        return 'done';
     }
 }
