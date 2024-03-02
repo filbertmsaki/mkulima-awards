@@ -120,7 +120,7 @@
                 <p>To confirm your participation and provide additional details for the awards ceremony, please click on
                     the following link: <a href="{{ $data['confimation_link'] }}">Confirm Your Participation</a></p>
 
-                <p>We kindly ask that you complete the confirmation process by 30<sup>th</sup> March, 2024 to secure
+                <p>We kindly ask that you complete the confirmation process by 15<sup>th</sup> March, 2024 to secure
                     your spot as a nominee.</p>
 
                 <p>We look forward to celebrating your achievements at the Mkulima Awards ceremony and showcasing your
