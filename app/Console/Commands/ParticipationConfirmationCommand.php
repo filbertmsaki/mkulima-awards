@@ -6,6 +6,7 @@ use App\Jobs\ParticipationConfirmationJob;
 use App\Models\AwardCategory;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class ParticipationConfirmationCommand extends Command
 {
@@ -65,8 +66,11 @@ class ParticipationConfirmationCommand extends Command
                     ];
                     dispatch(new ParticipationConfirmationJob($email, $data))->delay($delay);
                 }
+                Log::build([
+                    'driver' => 'single',
+                    'path' => storage_path('logs/participationConfirmationJob.log'),
+                ])->info("Email sent ".$index);
             }
-           
         }
     }
 }
