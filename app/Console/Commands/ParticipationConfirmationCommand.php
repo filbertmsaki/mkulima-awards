@@ -46,33 +46,27 @@ class ParticipationConfirmationCommand extends Command
 
         $groups = $details->chunk(50);
         foreach ($groups as $index =>  $group_detail) {
-            // foreach ($group_detail as $detail) {
-            //     $delay = now()->addHours($index); // Delay increases for each group
+            foreach ($group_detail as $detail) {
+                $delay = now()->addHours($index); // Delay increases for each group
 
-            //     if ($detail->contact_person_email) {
-            //         $email = $detail->contact_person_email;
-            //     } else if ($detail->company_email) {
-            //         $email = $detail->company_email;
-            //     } else {
-            //         $email = null;
-            //     }
-            //     if ($email) {
-            //         $data = [
-            //             'name' => $detail->service_name,
-            //             'total_category' => $categories_count,
-            //             'category' => $detail->award_category_name,
-            //             'confimation_link' => route('web.participation_confirmation', ['category' =>  $detail->award_category_id, 'id' =>  $detail->id]),
-            //         ];
-            //         dispatch(new ParticipationConfirmationJob($email, $data))->delay($delay);
-            //     }
-            // }
-            $data = [
-                'name' => 'Mkulima Awards',
-                'total_category' => 0,
-                'category' => "Confimation Email",
-                'confimation_link' => "",
-            ];
-            dispatch(new ParticipationConfirmationJob("info@kilimomarathon.co.tz", $data));
+                if ($detail->contact_person_email) {
+                    $email = $detail->contact_person_email;
+                } else if ($detail->company_email) {
+                    $email = $detail->company_email;
+                } else {
+                    $email = null;
+                }
+                if ($email) {
+                    $data = [
+                        'name' => $detail->service_name,
+                        'total_category' => $categories_count,
+                        'category' => $detail->award_category_name,
+                        'confimation_link' => route('web.participation_confirmation', ['category' =>  $detail->award_category_id, 'id' =>  $detail->id]),
+                    ];
+                    dispatch(new ParticipationConfirmationJob($email, $data))->delay($delay);
+                }
+            }
+           
         }
     }
 }
