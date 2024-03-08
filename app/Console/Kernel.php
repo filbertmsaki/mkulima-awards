@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('participation:confirmation')->yearlyOn(3, 8, '13:00')->withoutOverlapping();
+        $schedule->command('participation:confirmation')->yearlyOn(3, 8, '16:00')->withoutOverlapping();
     }
 
     /**
